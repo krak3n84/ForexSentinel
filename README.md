@@ -1,6 +1,6 @@
 # ForexSentinelGrok: Your Quantum-Secure Forex Event Guardian 🚀🔒
 
-[![Python Version](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![K-LOVE Inspired](https://img.shields.io/badge/Inspired%20By-K--LOVE%20Ministry-orange?logo=heart)](https://www.klove.com/)
+[![Python Version](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![K-LOVE Inspired](https://img.shields.io/badge/Inspired%20By-K--LOVE%20Ministry-orange?logo=heart)](https://www.klove.com/)[![Python](https://img.shields.io/badge/Python-3.12-blue)](https://python.org)
 
 > "Stay alert and of sober mind... for your adversary prowls around like a roaring lion" – 1 Peter 5:8 (NIV). In trading as in life, vigilance wins—let this sentinel guard your forex insights with ethical hacking precision!
 
