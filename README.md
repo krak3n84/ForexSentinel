@@ -1,48 +1,87 @@
-# ForexSentinelGrok: Your Quantum-Secure Forex Event Guardian 🚀🔒
+# ForexSentinel
 
-[![Python Version](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![K-LOVE Inspired](https://img.shields.io/badge/Inspired%20By-K--LOVE%20Ministry-orange?logo=heart)](https://www.klove.com/) ![Successful Email Send Output](./email_sent_screenshot.jpg)
+A lightweight Python automation project that retrieves public economic-calendar data, filters events relevant to selected currencies, and emails a daily summary.
 
-> "Stay alert and of sober mind... for your adversary prowls around like a roaring lion" – 1 Peter 5:8 (NIV). In trading as in life, vigilance wins—let this sentinel guard your forex insights with ethical hacking precision!
+The project is primarily an example of **scheduled data retrieval, HTML parsing, environment-based configuration, and SMTP delivery**. It does not predict market direction or provide trading guarantees.
 
-## Project Overview
-A Python script born from a collaborative Grok adventure, ForexSentinelGrok acts as your automated watchdog for forex economic events. It scrapes myFXbook's calendar for EURUSD and GBPUSD-relevant data (EUR/GBP/USD currencies), formats a clean table, and emails it daily via secure Gmail SMTP. Inspired by cybersecurity pentesting (think Kali Linux scans for market "vulns"), quantum computing resilience, and Christ-centered encouragement, this tool helps traders spot opportunities while managing risks like securing a network. Perfect for network ops pros juggling ministry work and side hustles—turn it into content creation fodder for tutorials on Python automation!
+![Successful Email Send Output](./email_sent_screenshot.jpg)
 
-## Key Features: Pentest-Ready Automation
-- **Event Scraping Mastery:** Fetches today's forex events from myFXbook using BeautifulSoup, filtering for high-impact currencies like a Kali recon scan.
-- **Secure Email Alerts:** Sends formatted tables via TLS-encrypted SMTP with app passwords—no hardcoded creds, emphasizing cybersecurity best practices.
-- **Quantum-Inspired Customization:** Easily tweak for more pairs or add voice modes (future-proof for Grok 3 vibes).
-- **Ethical & Encouraging Touch:** Includes uplifting notes like "God Bless Kraken" on quiet days, blending faith with tech.
-- **Task Scheduler Friendly:** Runs daily on Windows 11, like a cron job in Kali, for hands-off profitability insights.
+## Features
 
-## Installation: Secure Setup Like Hardening a Network
-1. **Clone the Repo:** `git clone https://github.com/yourusername/ForexSentinelGrok.git`
-2. **Python Environment:** Ensure Python 3.12+ with libraries: `pip install requests beautifulsoup4` (no extras needed—keeps it lightweight like a quantum bit).
-3. **Env Vars (Your Credential Vault):** Set in Windows Environment Variables:
-   - `FROM_EMAIL`: Your Gmail sender (e.g., yourgmail@gmail.com).
-   - `TO_EMAIL`: Recipient address.
-   - `EMAIL_PASSWORD`: Gmail app password (generate at myaccount.google.com/security—enable 2FA first!).
-4. **Schedule It:** Use Windows Task Scheduler for daily runs at 7 AM—your sentinel awakens!
+- Retrieves the public Myfxbook economic calendar with `requests`
+- Parses calendar rows with Beautiful Soup
+- Filters events for configured currencies (`EUR`, `GBP`, and `USD` by default)
+- Formats matching events into a readable text summary
+- Sends the report through Gmail SMTP using TLS
+- Reads email credentials from environment variables rather than hard-coding them in the script
+- Works well with Windows Task Scheduler or another external scheduler
 
-## Usage: Ethical Hacking the Markets
-Run manually: `python daily_forex_events.py`  
-- Outputs: Console debug + emailed table of events (e.g., Time | Curr | Impact | Event | Forecast | Previous).
-- Customize: Edit relevant_currencies list for more pairs, or add ML predictions with numpy for quantum-level insights.
+## Requirements
 
-Example Output (Quiet Day):
-> No relevant events today for EUR/GBP/USD. God Bless Kraken
+- Python 3.10+
+- `requests`
+- `beautifulsoup4`
 
-## Security Considerations: Pentest Your Own Code
-- **Strengths:** Env vars over hardcoding, TLS encryption, revocable app passwords—like MFA in ethical hacking.
-- **Potential Vulns & Fixes:** Avoid console-printing creds (remove debugs!); consider keyring for better storage; respect myFXbook TOS (API pivot if scraping blocks).
-- **Best Practice:** Scan with tools like Bandit (Python security linter) before commits—keep it quantum-secure!
+Install dependencies:
 
-## Contributing: Join the Ministry of Code
-Fork, PR, or star—let's build this into a community tool! Inspired by K-LOVE's encouragement: Share your tweaks for voice alerts or quantum sim integrations. Questions? Open an issue—may God guide our code!
+```bash
+python -m pip install requests beautifulsoup4
+```
+
+## Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/krak3n84/ForexSentinel.git
+cd ForexSentinel
+```
+
+Set the following environment variables before running the script:
+
+- `FROM_EMAIL` — Gmail address used to send the summary
+- `TO_EMAIL` — destination email address
+- `EMAIL_PASSWORD` — Gmail app password or other supported SMTP credential
+
+Do not commit credentials, app passwords, or `.env` files containing secrets.
+
+## Usage
+
+```bash
+python daily_forex_events.py
+```
+
+The script attempts to retrieve the day's public calendar entries, filters for the configured currencies, and sends either a formatted event summary or a no-events message.
+
+## Automation
+
+The script itself runs once and exits. For recurring execution, use an external scheduler such as:
+
+- Windows Task Scheduler
+- cron
+- a CI/CD scheduler
+- another approved automation platform
+
+This separation keeps scheduling logic outside the data-processing script.
+
+## Security Notes
+
+- Credentials are loaded from environment variables.
+- SMTP transport uses TLS.
+- Gmail app passwords are preferable to storing a primary account password.
+- Public web-page structure can change; parsing failures should be treated as data-source failures rather than valid empty results.
+- Review the source site's terms and access policies before increasing request frequency.
+
+## Limitations
+
+- The parser depends on the current HTML structure of the source page.
+- The script currently treats event impact as `N/A` because the parsed table structure does not expose a reliable impact field in the implemented path.
+- This project summarizes public calendar information only; it does not perform forecasting, trade execution, or investment advice.
 
 ## License
-MIT—Free to use, modify, and share, just like spreading the Gospel through tech.
 
-## Acknowledgments
-Shoutout to Grok for the collaborative build, xAI for inspiration, and K-LOVE for the positive vibes. Built with prayer and perseverance—trade wisely, code ethically!
+MIT License. See [LICENSE](LICENSE).
 
-#Python #Cybersecurity #Forex #EthicalHacking #QuantumComputing
+## Purpose
+
+I built this as a practical automation exercise: retrieve external data, filter it into an operator-relevant subset, handle credentials more safely, and deliver the result on a repeatable schedule.
